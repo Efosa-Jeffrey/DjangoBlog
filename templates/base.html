@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <title>Best Bloggers</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3min.css' %}">
+
+    <style>
+      body,h1,h2,h3,h4,h5,a {font-family: "Raleway", sans-serif; text-decoration: none;}
+    </style>
+  </head>
+
+  {% block content %}
+
+
+
+  {% endblock %}
+
+
+  <!-- Footer -->
+  <footer style="margin:-100%" class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+    <p style="text-align:center">Jeffrey Efosa Developers Group &copy; <script> document.write(new Date().getFullYear()) </script></p>
+  </footer>
+</html>
