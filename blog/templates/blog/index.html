@@ -7,7 +7,7 @@
 
   <!-- w3-content defines a container for fixed size centered content, 
   and is wrapped around the whole page content, except for the footer in this example -->
-  <div class="w3-content" style="max-width:1400px">
+  <div class="w3-content" style="max-width:1150px">
 
     <!-- Header -->
     <header class="w3-container w3-center"> 
@@ -36,22 +36,17 @@
           <a href="{% url 'details' post.pk %}"><img src="{{ post.image.url }}" alt="Nature" style="width:100%;"></a>
 
           <div class="w3-container">
-            <a href="{% url 'details' post.pk %}"><h5 style="font-family:monospace"><b>{{ post.title }}</b></h5></a>
-            <h6 style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></h6>
+            <a href="{% url 'details' post.pk %}"><h6 style="font-family:monospace"><b>{{ post.title }}</b></h6></a>
+            <span style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></span>
           </div>
 
           <div class="w3-container">
 
-            {% comment %} <p>{{ post.content|slice:":200" }}</p> {% endcomment %}
+            <p>{{ post.content|slice:":200" }}...</p>
             
-            <div class="w3-row">
+            <div class="w3-row" style="padding-bottom:10px">
               <div class="w3-col m8 s12">
-                <p><a href="{% url 'details' post.pk %}"><button class="w3-button w3-padding-small w3-white w3-border"><b>READ MORE »</b></button></a></p>
-              </div>
-
-              <div class="w3-col m4 w3-hide-small">
-
-                <p><span style="margin-left:-40px" class="w3-padding-large w3-right"><b></b> <span style="margin-right:-25px" class="w3-tag">{{ post.tag }}</span></span></p>
+                <span><a href="{% url 'details' post.pk %}"><span style="margin-left:-15px"class=" w3-padding-small"></span><b>Read More »</b></a></span>
               </div>
 
             </div>
@@ -72,22 +67,17 @@
           <a href="{% url 'details' post.pk %}"><img src="{{ post.image.url }}" alt="Nature" style="width:100%;"></a>
 
           <div class="w3-container">
-            <a href="{% url 'details' post.pk %}"><h5 style="font-family:monospace"><b>{{ post.title }}</b></h5></a>
-            <h6 style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></h6>
+            <a href="{% url 'details' post.pk %}"><h6 style="font-family:monospace"><b>{{ post.title }}</b></h6></a>
+            <span style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></span>
           </div>
 
           <div class="w3-container">
 
-            {% comment %} <p>{{ post.content|slice:":200" }}</p> {% endcomment %}
+            <p>{{ post.content|slice:":200" }}...</p>
             
-            <div class="w3-row">
+            <div class="w3-row" style="padding-bottom:10px">
               <div class="w3-col m8 s12">
-                <p><a href="{% url 'details' post.pk %}"><button class="w3-button w3-padding-small w3-white w3-border"><b>READ MORE »</b></button></a></p>
-              </div>
-
-              <div class="w3-col m4 w3-hide-small">
-
-                <p><span class="w3-padding-large w3-right"><b></b> <span style="margin-right:-25px" class="w3-tag">{{ post.tag }}</span></span></p>
+                <span><a href="{% url 'details' post.pk %}"><span style="margin-left:-15px"class=" w3-padding-small"></span><b>Read More »</b></a></span>
               </div>
 
             </div>
@@ -108,22 +98,18 @@
           <a href="{% url 'details' post.pk %}"><img src="{{ post.image.url }}" alt="Nature" style="width:100%;"></a>
 
           <div class="w3-container">
-            <a href="{% url 'details' post.pk %}"><h5 style="font-family:monospace"><b>{{ post.title }}</b></h5></a>
-            <h6 style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></h6>
+            <a href="{% url 'details' post.pk %}"><h6 style="font-family:monospace"><b>{{ post.title }}</b></h6></a>
+            <span style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></span>
           </div>
+          
 
           <div class="w3-container">
 
-            {% comment %} <p>{{ post.content|slice:":200" }}</p> {% endcomment %}
+            <p>{{ post.content|slice:":200" }}...</p>
             
-            <div class="w3-row">
+            <div class="w3-row" style="padding-bottom:10px">
               <div class="w3-col m8 s12">
-                <p><a href="{% url 'details' post.pk %}"><button class="w3-button w3-padding-small w3-white w3-border"><b>READ MORE »</b></button></a></p>
-              </div>
-
-              <div class="w3-col m4 w3-hide-small">
-
-                <p><span class="w3-padding-large w3-right"><b></b> <span style="margin-right:-25px" class="w3-tag">{{ post.tag }}</span></span></p>
+                <span><a href="{% url 'details' post.pk %}"><span style="margin-left:-15px"class=" w3-padding-small"></span><b>Read More »</b></a></span>
               </div>
 
             </div>
@@ -156,7 +142,7 @@
             {% for post in article_list|slice:":5" %}
             <a href="{% url 'details' post.pk %}"><li class="w3-padding-16">
               <img src="{{ post.image.url }}" alt="Image" class="w3-left w3-margin-right" style="width:50px; height:25px">
-              <span style="font-family:monospace; font-weight:bold; word-spacing:-5px;" class="w3-large">{{ post.title|slice:":31" }}</span><br>
+              <span style="font-family:monospace; font-weight:bold; word-spacing:-5px;" class="w3-medium">{{ post.title|slice:":31" }}</span><br>
               <span>{{ post.description }}</span>
             </li></a>
             {% endfor %}
@@ -165,7 +151,7 @@
         <hr> 
       
         <!-- Labels / tags -->
-        <div class="w3-card w3-margin">
+        {% comment %} <div class="w3-card w3-margin">
           <div style="margin-top:-15px; margin-bottom:-25px" class="w3-container">
             <h4>Tags</h4>
           </div>
@@ -177,7 +163,7 @@
             <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
           </p>
           </div>
-        </div>
+        </div> {% endcomment %}
         
       <!-- END Introduction Menu -->
       </div>
