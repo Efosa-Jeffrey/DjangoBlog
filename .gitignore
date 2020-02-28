@@ -1,0 +1,6 @@
+*swp
+__pycache__
+.DS_Store
+*.sqlite3
+Pipfile
+Pipfile.lock
