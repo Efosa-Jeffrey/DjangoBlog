@@ -5,15 +5,15 @@
 
 <body class="w3-light-grey">
 
-<!-- w3-content defines a container for fixed size centered content, 
+<!-- w3-content defines a container for fixed size centered content,
 and is wrapped around the whole page content, except for the footer in this example -->
 <div class="w3-content" style="max-width:1200px">
 
 <!-- Header -->
-<header class="w3-container w3-center w3-padding-32"> 
+<header class="w3-container w3-center w3-padding-32">
   <h1 style="font-family:monospace"><b>THE ANALYSTS</b></h1>
       <p>Welcome to my blog <span class="w3-tag">homepage</span></p>
-      
+
       <!-- Navigation -->
       <div class="w3-padding-16 w3-margin-bottom">
         <a href="{% url 'home' %}"><button class="w3-button w3-black w3-padding-small">Home</button></a>
@@ -58,7 +58,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 <!-- Introduction menu -->
 <div class="w3-col l4">
-  <!-- About Card --> 
+  <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">
   <img src="{% static 'images/foreign_guy.jpg' %}" style="width:100%">
     <div class="w3-container w3-white">
@@ -84,7 +84,7 @@ and is wrapped around the whole page content, except for the footer in this exam
       {% endfor %}
     </ul>
   </div>
-  <hr> 
+  <hr>
 
   <!-- Labels / tags -->
   <div class="w3-card w3-margin">
