@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <hr>
+  <div>
+    <h3 class="w3-card-4" style="font-family:monospace; text-align:center">Edit: <b>{{ object.title }}</b></h3>
+
+    <div class="w3-card-4 w3-margin w3-white">
+      <form class="container w3-container w3-padding-32 w3-margin-top" action="{% url 'create_post' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" value="Create">
+
+      </form>
+
+      <!--Going back to article list-->
+      <div class="w3-container w3-padding-32 w3-margin-top">
+        <a href="{% url 'articles' %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Return to article list</button></a>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
