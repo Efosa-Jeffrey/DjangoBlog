@@ -1,75 +1,71 @@
+{% extends 'users/base_auth.html' %}
 {% load static %}
+{% block title %}Register{% endblock title %}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>SignUp</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-</head>
-<body>
-	<img class="wave" src="{% static 'images/wave.png' %}">
-	<div class="container">
-		<div class="img">
-			<img src="{% static 'images/bg.svg' %}">
-		</div>
-		<div class="login-content">
-			<form action="index.html">
-				<img src="{% static 'images/avatar.svg' %}">
-				<h2 class="title">Create Account</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>First name</h5>
-           		   		<input type="text" class="input">
-           		   </div>
-           		</div>
-							<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Last name</h5>
-           		   		<input type="text" class="input">
-           		   </div>
-           		</div>
-							<div class="input-div one">
-           		   <div class="i">
-									 <i class="fas fa-envelope"></i>
-								 </div>
-           		   <div class="div">
-           		   		<h5>Email</h5>
-           		   		<input type="email" class="input">
-           		   </div>
-           		</div>
-							<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Password</h5>
-           		   		<input type="pass" class="input">
-           		   </div>
-           		</div>
-           		<div class="input-div pass">
-           		   <div class="i">
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Confirm Password</h5>
-           		    	<input type="password" class="input">
-            	   </div>
-            	</div><br>
-            	<input type="submit" class="btn" value="Signup">
-							<span class="help">
-									<br>Already have an account?&nbsp;<a href="{% url 'login' %}">Log in</a>
-							</span><br><br><br>
-            </form>
-        </div>
-    </div>
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% block content %}
+
+<body class="login no-js login-action-register wp-core-ui  locale-en-us">
+	<script type="text/javascript">
+		document.body.className = document.body.className.replace('no-js','js');
+	</script>
+		<div id="login">
+			<a href="#"><img style="height:100px; margin: -100px 0 5px 110px;" src="{% static 'users/images/avatar.svg' %}"/></a>
+	<!-- <p class="message register">Create Account</p> -->
+			<h2 style="text-align:center">Create Account</h2>
+		<form name="registerform" id="registerform" action="" method="post" novalidate="novalidate">
+			{% csrf_token %}
+			<p>
+				<label for="user_login">First name</label>
+				{{ form.first_name }}
+				<!-- <input type="text" name="firstname" id="user_login" class="input" value="" size="20" autocapitalize="off" /> -->
+			</p>
+			<p>
+				<label for="user_login">Last name</label>
+				{{ form.last_name }}
+				<!-- <input type="text" name="lastname" id="user_login" class="input" value="" size="20" autocapitalize="off" /> -->
+			</p>
+			<p>
+				<label for="user_login">Username</label>
+				{{ form.username }}
+				<!-- <input type="text" name="username" id="user_login" class="input" value="" size="20" autocapitalize="off" /> -->
+			</p>
+			<p>
+				<label for="user_email">Email</label>
+				{{ form.email }}
+				<!-- <input type="email" name="email" id="user_email" class="input" value="" size="25" /> -->
+			</p>
+			<p>
+				<label for="user_pass">Password</label>
+				{{ form.password1 }}
+				<!-- <input type="password" name="password1" id="user_pass" class="input password-input" value="" size="20" /> -->
+			</p>
+			<p>
+				<label for="user_pass">Confirm Password</label>
+				{{ form.password2 }}
+				<!-- <input type="password" name="password2" id="user_pass" class="input password-input" value="" size="20" /> -->
+			</p>
+						<!-- <p id="reg_passmail">
+				Registration confirmation will be emailed to you.			</p> -->
+			<br class="clear" />
+			<input type="hidden" name="redirect_to" value="" />
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Register" />
+			</p>
+		</form>
+
+		<p id="nav" style="text-align:center">
+			<span>Already have an account?</span>
+			<a href="{% url 'login' %}">Log in</a>
+		</p>
+				<!-- <p id="backtoblog"><a href="#">
+		&larr; Back to Homepage		</a></p> -->
+		<br><br>
+			</div>
+			<script type="text/javascript">
+		try{document.getElementById('user_login').focus();}catch(e){}
+		if(typeof wpOnload=='function')wpOnload();
+		</script>
+			<div class="clear"></div>
 </body>
-</html>
+
+	{% endblock content %}

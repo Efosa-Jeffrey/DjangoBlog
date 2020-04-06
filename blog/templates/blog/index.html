@@ -1,27 +1,8 @@
 ﻿{% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
-
-<body class="w3-light-grey">
-
-<!-- w3-content defines a container for fixed size centered content,
-and is wrapped around the whole page content, except for the footer in this example -->
-<div class="w3-content" style="max-width:1200px">
-
-<!-- Header -->
-<header class="w3-container w3-center w3-padding-32">
-  <h1 style="font-family:monospace"><b>THE ANALYSTS</b></h1>
-      <p>Welcome to my blog <span class="w3-tag">homepage</span></p>
-
-      <!-- Navigation -->
-      <div class="w3-padding-16 w3-margin-bottom">
-        <a href="{% url 'home' %}"><button class="w3-button w3-black w3-padding-small">Home</button></a>
-        <a href="{% url 'about' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">About</button></a>
-        <a href="{% url 'articles' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Articles</button></a>
-
-      </div>
-</header>
 
 <!-- Grid -->
 <div class="w3-row">
@@ -32,17 +13,17 @@ and is wrapped around the whole page content, except for the footer in this exam
 
     <!-- Blog entry -->
     <div class="w3-card-4 w3-margin w3-white">
-      <a href="{% url 'details' post.pk %}"><img src="{{ post.image.url }}" alt="Can't load picture" style="width:100%;"></a>
+      <a href="{% url 'details' post.slug %}"><img src="{{ post.image.url }}" alt="Can't load picture" style="width:100%;"></a>
       <div class="w3-container">
-        <a href="{% url 'details' post.pk %}"><h6 style="font-family:monospace"><b>{{ post.title }}</b></h6></a>
-        <span style="font-family:cursive"><span class="w3-opacity">{{ post.writer }}, {{ post.date }}</span></span>
+        <a href="{% url 'details' post.slug %}"><h6 style="font-family:monospace"><b>{{ post.title }}</b></h6></a>
+        <span style="font-family:cursive"><span class="w3-opacity">{{ post.author.get_full_name }}, {{ post.date }}</span></span>
       </div>
 
       <div class="w3-container">
         <p>{{ post.content|slice:":200" }}...</p>
         <div class="w3-row" style="padding-bottom:10px">
           <div class="w3-col m8 s12">
-            <span><a href="{% url 'details' post.pk %}"><span style="margin-left:-15px"class=" w3-padding-small"></span><b>Read More »</b></a></span>
+            <span><a href="{% url 'details' post.slug %}"><span style="margin-left:-15px"class=" w3-padding-small"></span><b>Read More »</b></a></span>
           </div>
           <div class="w3-col m4 w3-hide-small">
             <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
@@ -60,7 +41,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="w3-col l4">
   <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">
-  <img src="{% static 'images/foreign_guy.jpg' %}" style="width:100%">
+  <img src="{% static 'blog/images/foreign_guy.jpg' %}" style="width:100%">
     <div class="w3-container w3-white">
       <h4><b>My Name</b></h4>
       <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
@@ -76,7 +57,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     <ul class="w3-ul w3-hoverable w3-white">
 
       {% for post in article_list %}
-      <a href="{% url 'details' post.pk %}"><li class="w3-padding-16">
+      <a href="{% url 'details' post.slug %}"><li class="w3-padding-16">
         <img src="{{ post.image.url }}" alt="Image" class="w3-left w3-margin-right" style="width:50px; height:25px">
         <span style="font-family:monospace; font-weight:bold; word-spacing:-5px;" class="w3-medium">{{ post.title|slice:":31" }}</span><br>
         <span>{{ post.description }}</span>
@@ -107,8 +88,6 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- END GRID -->
 </div><br>
 
-<!-- END w3-content -->
-</div>
 
   <!-- Pagination -->
 {% if is_paginated %}
@@ -135,5 +114,4 @@ and is wrapped around the whole page content, except for the footer in this exam
   </div>
 {% endif %}
 
-</body>
 {% endblock %}

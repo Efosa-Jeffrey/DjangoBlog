@@ -4,49 +4,34 @@
 
 {% block content %}
 
+  <hr>
+  <div>
+    <h3 class="w3-card-4" style="font-family:monospace; text-align:center"><b>{{ article_list.title }}</b></h3>
 
-<body class="w3-light-grey">
+    <div class="w3-card-4 w3-margin w3-white">
 
-  <!-- w3-content defines a container for fixed size centered content, 
-  and is wrapped around the whole page content, except for the footer in this example -->
-  <div class="w3-content" style="max-width:auto">
+      <img src="{{ article_list.image.url }}" alt="Nature" style="width:100%;">
+      <div class="w3-container">
+        <h6 style="font-family:cursive"><span class="w3-opacity">{{ article_list.author.get_full_name }}, {{ article_list.date }}</span></h6>
+      </div>
+      <div class="w3-container">
+          <p style="text-align:justify">{{ article_list.content|linebreaks }}</p>
+      </div>
 
-    <!-- Header -->
-    <header class="w3-container w3-center"> 
-        <h1 style="font-family:monospace"><b></b></h1>
-        <p>Enjoy the best of our <span class="w3-tag">articles</span></p>
-      
-        <!--Adding home about and others-->
-        <div>
-            <a href="{% url 'home' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Home</button></a>
-            <a href="{% url 'about' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">About</button></a>
-            <a href="{% url 'articles' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Articles</button></a>
-
+      {% if user.is_authenticated %}
+        <center>
+        <div class="w3-container" style="padding-top:50px">
+          <a href="{% url 'update_post' article_list.slug %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Update Post</button></a>
         </div>
-    </header>
-    <hr>
-    <div>    
-      <h3 class="w3-card-4" style="font-family:monospace; text-align:center"><b>{{ article_list.title }}</b></h3>
+        </center>
+      {% endif %}
 
-      <div class="w3-card-4 w3-margin w3-white">
-
-        <img src="{{ article_list.image.url }}" alt="Nature" style="width:100%;">
-        <div class="w3-container">
-          <h6 style="font-family:cursive"><span class="w3-opacity">{{ article_list.writer }},{{ article_list.date }}</span></h6>
-        </div>
-        <div class="w3-container">
-            <p style="text-align:justify">{{ article_list.content|linebreaksbr }}</p>
-        </div>
-
-        <!--Going back to article list-->
-        <div class="w3-container w3-padding-32 w3-margin-top">
-          <a href="{% url 'articles' %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Return to article list</button></a>
-        </div>
+      <!--Going back to article list-->
+      <div class="w3-container w3-padding-32 w3-margin-top">
+        <a href="{% url 'articles' %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Return to article list</button></a>
       </div>
     </div>
-</body>
+  </div>
 
 
 {% endblock %}
-
-

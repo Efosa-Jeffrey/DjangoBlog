@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/w3min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/w3min.css' %}">
 
     <style>
       body,h1,h2,h3,h4,h5,a {font-family: "Raleway", sans-serif; text-decoration: none;}
@@ -22,13 +22,41 @@
 
     </style>
   </head>
-<body>
-  {% block content %}
 
+  <body class="w3-light-grey">
 
+  <!-- w3-content defines a container for fixed size centered content,
+  and is wrapped around the whole page content, except for the footer in this example -->
+  <div class="w3-content" style="max-width:1200px">
 
-  {% endblock %}
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding-32">
+      <h1 style="font-family:monospace"><b>THE ANALYSTS</b></h1>
+          <!-- <p>Welcome to my blog <span class="w3-tag">homepage</span></p> -->
+
+          <!-- Navigation -->
+          <div class="w3-padding-16 w3-margin-bottom">
+            <a href="{% url 'home' %}"><button class="w3-button w3-black w3-padding-small">Home</button></a>
+            <a href="{% url 'about' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">About</button></a>
+            <a href="{% url 'articles' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Articles</button></a>
+            <a href="{% url 'register' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Register</button></a>
+            <a href="{% url 'login' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Login</button></a>
+
+            {% if user.is_authenticated %}
+              <a href="{% url 'create_post' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">New Post</button></a>
+              <a href="{% url 'logout' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Logout</button></a>
+            {% endif %}
+
+          </div>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+  <!-- END w3-content -->
+  </div>
+
 </body>
+
 
   <!-- Footer -->
   <footer style="margin:-100%" class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
