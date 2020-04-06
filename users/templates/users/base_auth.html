@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+	<!--[if IE 8]>
+		<html xmlns="http://www.w3.org/1999/xhtml" class="ie8" lang="en-US">
+	<![endif]-->
+	<!--[if !(IE 8) ]><!-->
+		<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+	<!--<![endif]-->
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{% block title %}  &lsaquo; Casor Uniben &#8212; WordPress{% endblock title %}</title>
+	<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='dashicons-css'  href="{% static 'users/css/dashicons.min.css' %}" type='text/css' media='all' />
+<link rel='stylesheet' id='buttons-css'  href="{% static 'users/css/buttons.min.css' %}" type='text/css' media='all' />
+<link rel='stylesheet' id='forms-css'  href="{% static 'users/css/forms.min.css' %}" type='text/css' media='all' />
+<link rel='stylesheet' id='l10n-css'  href="{% static 'users/css/l10n.min.css' %}" type='text/css' media='all' />
+<link rel='stylesheet' id='login-css'  href="{% static 'users/css/login.min.css' %}	" type='text/css' media='all' />
+	<meta name='robots' content='noindex,noarchive' />
+	<meta name='referrer' content='strict-origin-when-cross-origin' />
+		<meta name="viewport" content="width=device-width" />
+	<link rel="icon" href="" sizes="32x32" />
+	</head>
+	
+  {% block content %}
+
+	{% endblock content %}
+
+  </html>
