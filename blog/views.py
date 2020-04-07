@@ -9,7 +9,8 @@ from django.views.generic import (
 )
 from django.views.generic.edit import (
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView
 )
 
 
@@ -34,7 +35,7 @@ class ArticlesPage(ListView):
     model = Article
     template_name = 'blog/articles.html'
     context_object_name = 'article_list'
-    paginate_by = 5
+    paginate_by = 7
 
 
 class CreatePost(CreateView):
@@ -47,3 +48,9 @@ class UpdatePost(UpdateView):
     model = Article
     template_name = 'blog/update_post.html'
     fields = ['title', 'slug', 'description', 'content']
+
+
+class DeletePost(DeleteView):
+    model = Article
+    template_name = 'blog/delete_post.html'
+    success_url = reverse_lazy('home')

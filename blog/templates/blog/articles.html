@@ -5,24 +5,23 @@
 {% block content %}
 
 
-{% for post in article_list|slice:":10" %}
+<!-- Blog entries -->
+<div class="w3-col l12 s12">
+  {% for post in article_list %}
 
-  <div>
-    <!-- All articles -->
-
+    <!-- Blog entry -->
     <div class="w3-card-4 w3-margin w3-white">
-
-      <a href="{% url 'details' post.slug %}"><img src="{{ post.image.url }}" alt="Nature" style="width:100%;"></a>
+      <a href="{% url 'details' post.slug %}"><img src="{{ post.image.url }}" alt="Can't load picture" style="width:100%;"></a>
       <div class="w3-container">
-        <a href="{% url 'details' post.slug %}"><h4 style="font-family:monospace"><b>{{ post.title }}</b></h4></a>
-        <h6 style="font-family:cursive"><span class="w3-opacity">{{ post.author.get_full_name }}, {{ post.date }}</span></h6>
+        <a href="{% url 'details' post.slug %}"><h6 style="font-family:monospace"><b>{{ post.title }}</b></h6></a>
+        <span style="font-family:cursive"><span class="w3-opacity">{{ post.author.get_full_name }}, {{ post.date }}</span></span>
       </div>
 
       <div class="w3-container">
-        <span style="font-style:italic;">{{ post.description }}</span>
-        <div class="w3-row">
+        <p>{{ post.content|slice:":200" }}...</p>
+        <div class="w3-row" style="padding-bottom:10px">
           <div class="w3-col m8 s12">
-            <p><a href="{% url 'details' post.slug %}"><button class="w3-button w3-padding-small w3-white w3-border"><b>READ MORE »</b></button></a></p>
+            <span><a href="{% url 'details' post.slug %}"><span style="margin-left:-15px"class=" w3-padding-small"></span><b>Read More »</b></a></span>
           </div>
           <div class="w3-col m4 w3-hide-small">
             <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
@@ -30,8 +29,11 @@
         </div>
       </div>
     </div>
-  </div
-{% endfor %}
+    <hr>
+  {% endfor %}
+
+<!-- END BLOG ENTRIES -->
+</div>
 
    <!-- Pagination -->
   {% if is_paginated %}

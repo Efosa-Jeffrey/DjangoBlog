@@ -21,7 +21,8 @@
       {% if user.is_authenticated %}
         <center>
         <div class="w3-container" style="padding-top:50px">
-          <a href="{% url 'update_post' article_list.slug %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Update Post</button></a>
+          <a href="{% url 'update_post' article_list.slug %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Edit Post</button></a>
+          <a href="{% url 'delete_post' article_list.slug %}"><button class="w3-button w3-black w3-padding-small w3-margin-bottom">Delete Post</button></a>
         </div>
         </center>
       {% endif %}

@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="{% static 'blog/css/w3.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/w3min.css' %}">
-
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
     <style>
       body,h1,h2,h3,h4,h5,a {font-family: "Raleway", sans-serif; text-decoration: none;}
       .column {
@@ -33,22 +37,57 @@
     <header class="w3-container w3-center w3-padding-32">
       <h1 style="font-family:monospace"><b>THE ANALYSTS</b></h1>
           <!-- <p>Welcome to my blog <span class="w3-tag">homepage</span></p> -->
+    </header>
 
-          <!-- Navigation -->
-          <div class="w3-padding-16 w3-margin-bottom">
-            <a href="{% url 'home' %}"><button class="w3-button w3-black w3-padding-small">Home</button></a>
-            <a href="{% url 'about' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">About</button></a>
-            <a href="{% url 'articles' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Articles</button></a>
-            <a href="{% url 'register' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Register</button></a>
-            <a href="{% url 'login' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Login</button></a>
+    <nav class="navbar navbar-inverse " role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        <a class="navbar-brand" href="#">Brand</a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'articles' %}">Articles</a></li>
 
             {% if user.is_authenticated %}
-              <a href="{% url 'create_post' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">New Post</button></a>
-              <a href="{% url 'logout' %}"><button style="cursor:pointer" class="w3-button w3-black w3-disabled w3-padding-small">Logout</button></a>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'create_post' %}">New Post</a></li>
+                  {% comment %} <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li> {% endcomment %}
+                </ul>
+              </li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+              <li><a href="{% url 'register' %}">Register</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
             {% endif %}
 
-          </div>
-    </header>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.navbar-container -->
+    </nav>
+
+  <br><br>
+
+
     {% block content %}
 
     {% endblock %}
