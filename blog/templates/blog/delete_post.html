@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <hr>
+  <div class="w3-content" style="max-width:800px">
+  <div>
+    <h3 class="w3-card-4" style="font-family:monospace; text-align:center">Are you sure you want to delete :<b>{{ object.title }}?</b></h3>
+
+    <div class="w3-card-4 w3-margin w3-white">
+
+      <img src="{{ object.image.url }}" alt="Nature" style="width:100%;">
+      <div class="w3-container">
+        <h4 style="font-family:cursive"><span class="w3-opacity">By: {{ object.author.get_full_name }}, <br><br>Posted On: {{ object.date }}</span></h4>
+      </div>
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form }}
+            <center>
+              <div class="w3-container" style="padding-top:50px">
+                <a href="{% url 'delete_post' object.slug %}"><button type="submit" class="w3-button w3-black w3-padding-small w3-margin-bottom">Delete</button></a>
+              </div>
+            </center>
+        </form>
+
+      <!--Going back to article list-->
+      <center>
+        <div class="w3-container w3-padding-32">
+          <a href="{% url 'articles' %}"><button class="w3-button w3-padding-small w3-margin-bottom">Return to article list</button></a>
+        </div>
+      </center>
+    </div>
+  </div>
+
+
+{% endblock %}
